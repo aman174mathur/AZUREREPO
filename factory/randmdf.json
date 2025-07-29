@@ -1,0 +1,9 @@
+{
+	"name": "randmdf",
+	"location": "eastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "02aafe0a-19d4-4182-a266-057aebd462a7",
+		"tenantId": "11e9c7c3-b300-4e3e-b72d-ff1e159d9cfb"
+	}
+}
