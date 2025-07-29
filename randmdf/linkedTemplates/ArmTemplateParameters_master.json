@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "randmdf"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_connectionString": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"linkedService1_connectionString": {
+			"value": ""
+		},
+		"linkedService2_accountKey": {
+			"value": ""
+		},
+		"rndmcopyed_accountKey": {
+			"value": ""
+		},
+		"linkedService2_properties_typeProperties_url": {
+			"value": "https://rndmstge123.dfs.core.windows.net/"
+		},
+		"rndmcopyed_properties_typeProperties_url": {
+			"value": "https://rndmstge123.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
