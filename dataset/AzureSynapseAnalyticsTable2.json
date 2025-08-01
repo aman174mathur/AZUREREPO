@@ -1,0 +1,59 @@
+{
+	"name": "AzureSynapseAnalyticsTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSynapseAnalytics1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "First_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Last_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Age",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "City_From",
+				"type": "varchar"
+			},
+			{
+				"name": "City_To",
+				"type": "varchar"
+			},
+			{
+				"name": "Bus_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Seat_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Booking_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Payment_Method",
+				"type": "varchar"
+			},
+			{
+				"name": "Ticket_Fare",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "bustable4"
+		}
+	}
+}
