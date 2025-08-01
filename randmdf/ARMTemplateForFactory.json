@@ -174,13 +174,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pyfile_adf_synp')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "copyindf",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -197,6 +197,7 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
+									"wildcardFileName": "*",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -211,6 +212,128 @@
 							"enableStaging": false,
 							"translator": {
 								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "First_Name ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "First_Name",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Last_Name ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Last_Name",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Age",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Age",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "City_From",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "City_From",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "City_To",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "City_To",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Bus_Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Bus_Type",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Seat_Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Seat_Type",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Booking_Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Booking_Type",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Payment_Method",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Payment_Method",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Ticket_Fare",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Ticket_Fare",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
 								"typeConversion": true,
 								"typeConversionSettings": {
 									"allowDataTruncation": true,
@@ -220,14 +343,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DelimitedText7",
+								"referenceName": "DelimitedText5",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "AzureSynapseAnalyticsTable4",
+								"referenceName": "AzureSynapseAnalyticsTable5",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -240,8 +363,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DelimitedText7')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSynapseAnalyticsTable4')]"
+				"[concat(variables('factoryId'), '/datasets/DelimitedText5')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSynapseAnalyticsTable5')]"
 			]
 		},
 		{
@@ -501,24 +624,51 @@
 				"type": "AzureSqlDWTable",
 				"schema": [
 					{
-						"name": "movieId",
+						"name": "First_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Last_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Age",
 						"type": "int",
 						"precision": 10
 					},
 					{
-						"name": "imdbId",
-						"type": "int",
-						"precision": 10
+						"name": "City_From",
+						"type": "varchar"
 					},
 					{
-						"name": "tmdbId",
+						"name": "City_To",
+						"type": "varchar"
+					},
+					{
+						"name": "Bus_Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Seat_Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Booking_Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Payment_Method",
+						"type": "varchar"
+					},
+					{
+						"name": "Ticket_Fare",
 						"type": "int",
 						"precision": 10
 					}
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "Linkstable3"
+					"table": "bustable4"
 				}
 			},
 			"dependsOn": [
@@ -538,24 +688,49 @@
 				"type": "AzureSqlDWTable",
 				"schema": [
 					{
-						"name": "movieId",
-						"type": "int",
-						"precision": 10
+						"name": "First_Name",
+						"type": "varchar"
 					},
 					{
-						"name": "imdbId",
-						"type": "int",
-						"precision": 10
+						"name": "Last_Name",
+						"type": "varchar"
 					},
 					{
-						"name": "tmdbId",
-						"type": "int",
-						"precision": 10
+						"name": "Age",
+						"type": "varchar"
+					},
+					{
+						"name": "City_From",
+						"type": "varchar"
+					},
+					{
+						"name": "City_To",
+						"type": "varchar"
+					},
+					{
+						"name": "Bus_Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Seat_Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Booking_Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Payment_Method",
+						"type": "varchar"
+					},
+					{
+						"name": "Ticket_Fare",
+						"type": "varchar"
 					}
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "Linkstable4"
+					"table": "bustable4"
 				}
 			},
 			"dependsOn": [
@@ -576,50 +751,69 @@
 				"schema": [
 					{
 						"name": "First_Name",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Last_Name",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Age",
-						"type": "int",
-						"precision": 10
+						"type": "varchar"
 					},
 					{
 						"name": "City_From",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "City_To",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Bus_Type",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Seat_Type",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Booking_Type",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Payment_Method",
-						"type": "char"
+						"type": "varchar"
 					},
 					{
 						"name": "Ticket_Fare",
-						"type": "int",
-						"precision": 10
+						"type": "varchar"
 					}
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "bustable2"
+					"table": "main_bus_table"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSynapseAnalytics1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSynapseAnalyticsTable5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSynapseAnalytics1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "red_bus"
 				}
 			},
 			"dependsOn": [
@@ -832,144 +1026,6 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "redbusdata.csv",
-						"fileSystem": "buscontainer2"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "First_Name ",
-						"type": "String"
-					},
-					{
-						"name": "Last_Name ",
-						"type": "String"
-					},
-					{
-						"name": "Age",
-						"type": "String"
-					},
-					{
-						"name": "City_From",
-						"type": "String"
-					},
-					{
-						"name": "City_To",
-						"type": "String"
-					},
-					{
-						"name": "Bus_Type",
-						"type": "String"
-					},
-					{
-						"name": "Seat_Type",
-						"type": "String"
-					},
-					{
-						"name": "Booking_Type",
-						"type": "String"
-					},
-					{
-						"name": "Payment_Method",
-						"type": "String"
-					},
-					{
-						"name": "Ticket_Fare",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/rndmcopyed')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText6')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "rndmcopyed",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "REDBUS_data.csv",
-						"fileSystem": "buscontainer2"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "First_Name ",
-						"type": "String"
-					},
-					{
-						"name": "Last_Name ",
-						"type": "String"
-					},
-					{
-						"name": "Age",
-						"type": "String"
-					},
-					{
-						"name": "City_From",
-						"type": "String"
-					},
-					{
-						"name": "City_To",
-						"type": "String"
-					},
-					{
-						"name": "Bus_Type",
-						"type": "String"
-					},
-					{
-						"name": "Seat_Type",
-						"type": "String"
-					},
-					{
-						"name": "Booking_Type",
-						"type": "String"
-					},
-					{
-						"name": "Payment_Method",
-						"type": "String"
-					},
-					{
-						"name": "Ticket_Fare",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/rndmcopyed')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText7')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "rndmcopyed",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
 						"fileName": "REDBUS_data.csv",
 						"fileSystem": "newbuscont"
 					},
@@ -1023,43 +1079,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/rndmcopyed')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_23x')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSynapseAnalytics1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlDWTable",
-				"schema": [
-					{
-						"name": "movieId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "imdbId",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "tmdbId",
-						"type": "int",
-						"precision": 10
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "linkstable2"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSynapseAnalytics1')]"
 			]
 		},
 		{
