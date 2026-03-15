@@ -8,7 +8,7 @@ The pipeline extracts data from a MySQL database, processes it using Azure Datab
 
 MySQL → Azure Data Factory → Azure Blob Storage → Azure Databricks → Azure Synapse Analytics → Power BI
 
-![Architecture](architecture/architecture-diagram.png)
+
 
 ## Tech Stack
 
@@ -60,12 +60,13 @@ Power BI dashboards provide insights into:
 - Analytical data warehouse using Synapse
 - Business intelligence dashboard with Power BI
 
-## Example Dashboard
-
-![Dashboard](images/powerbi_dashboard.png)
 
 ## Future Improvements
 
 - Add incremental data loading
 - Implement data quality checks
 - Add CI/CD using Azure DevOps
+
+
+
+
